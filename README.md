@@ -1,19 +1,24 @@
 
-# MultiUserBoard
+# Parcial
 
-The project is a multiuser drawing board made up of two applications: one serves as the frontend and the other as the backend (API) built with Spring Boot. The backend includes two endpoints: one (GET) that returns a list of drawing actions, and another (POST) that receives and stores a new drawing action. The frontend, developed in React JS, displays a board where users can draw circles by clicking. Being multiplayer, it can run in multiple browsers at once, enabling users to see changes in semi-real-time.
+Este proyecto contiene una aplicación para consultar el mercado de valores de las acciones negociadas en Bolsa.  La aplicación recibe el identificador de una acción, por ejemplo “MSFT” para Microsoft  y deberá mostrar el histórico de la valoración intra-día, diaria, semanal y mensual. Para esto se utiliza el API gratuito de https://www.alphavantage.co/documentation. 
 
 ### Features
-+ **Draw**: You can draw consecutive circles using the mouse click.
+1. Cliente escrito en React invocando servicios REST 
+2. Servidor fachada implementado en Spring exponiendo servicios REST 
+3. Conexión a servicios externos
+4. Aplicación desplegada en AWS 
+5. Cliente Java para Tests concurrentes 
+6. Cache tolerante a la concurrencia 
 
 ## Getting Started
 Download the project from 
-[the repository.](https://github.com/Sebasvasquezz/MultiUserBoard.git)
+[the repository.](https://github.com/Sebasvasquezz/Parcial1)
 
 You can also clone the file using the following command.
 
 ```
-git clone https://github.com/Sebasvasquezz/MultiUserBoard.git  
+git clone https://github.com/Sebasvasquezz/Parcial1  
 ```
 
 ### Prerequisites
@@ -56,65 +61,14 @@ Once you have the cloned project in your repository. Follow the steps below to l
     mvn spring-boot:run
     ```
 
-#### Run FrontEnd React Js
+4. Now open a browser and go to the following [link](http://ec2-3-91-249-28.compute-1.amazonaws.com:8080/) to start drawing:
+![Execution in AWS](image.png)
 
-1. Open a terminal and enter the folder where I clone the repository and enter the BoardReact folder.
-
-2. Use the following command to install dependencies
-    ```
-    npm install
-    ```
-3. Now use the following command start proyect
-
-    ```
-    npm start
-    ```
-
-4. Now open a browser and go to the following [link](http://localhost:3000/) to start drawing:
-![Execution](images/image.png)
-
-
-## Proyect Structure
-
-### Run BackEnd Spring-boot
-
-- BoardApplication: Main application class for the Spring Boot application.
-
-- ClickController: REST controller for handling mouse click data.
-
-- Click: Represents a mouse click data object.
-
-### Run FrontEnd React Js
-
-#### App:
-
-- Contains the global state of the application (clicks and color).
-- Renders ActionFetcher and Canvas, passing them necessary functions and data as props.
-
-#### ActionFetcher:
-
-- Uses useEffect to execute fetchActions() every second using setInterval.
-- fetchActions() makes a GET request to the server to fetch drawing actions.
-- Updates the actions state in App using setActions.
-
-#### Board:
-
-- Uses useRef to create references to containerRef (the canvas container) and p5InstanceRef (the p5 instance).
-- Defines sketch to configure and draw on the canvas.
-- useEffect initializes the p5 instance and associates it with containerRef when the component mounts.
-- Another useEffect handles redrawing actions when actions change.
-- drawAction draws a circle on the canvas based on received actions.
-
-#### Server (API):
-
-- There are two endpoints:
-  - /clicks (GET): Returns a list of drawing actions.
-  - /clicks (POST): Receives a new drawing action and stores it.
 
 
 ## Architectural Design
 
-![Architectural Design](images/image1.png)
+![Architectural Design](<Blank diagram.png>)
 
 ### Data Flow
 
@@ -144,7 +98,7 @@ Once you have the cloned project in your repository. Follow the steps below to l
 
 ## Date
 
-June 29, 2024
+Jule 2, 2024
 
 ## License
 
